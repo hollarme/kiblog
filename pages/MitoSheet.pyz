@@ -1,0 +1,13 @@
+# import streamlit as st
+# from mitosheet.streamlit.v1 import spreadsheet
+
+# st.header("View and Edit data with MitoSheet")
+
+# dataset = st.radio(
+#             "Choose dataset to play with",
+#             ["expx_data_df", "inc_data_df", "data_df"],
+#             captions = ["Expenses Data", "Income Data", "Product List"], horizontal=True)
+
+# dataframe, code = spreadsheet(st.session_state[f"{dataset}"])
+
+# st.code(code)
