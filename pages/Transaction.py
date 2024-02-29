@@ -86,11 +86,11 @@ try:
                 category = st.selectbox("select the product category", set(b_df['Category'].tolist()))
                 product = st.selectbox("select the product", set(b_df.loc[b_df['Category']==category]['Product'].tolist()))
                 type = st.selectbox("select the product type if available", set(b_df.loc[(b_df['Category']==category)&(b_df['Product']==product)]['Type'].tolist()))
-                weight = st.number_input("Enter the products weight in kg", value=None, key="weight")
-                units = st.number_input("Number of units sold", key="units")
-                unit_price = st.number_input("Enter the unit price", value=b_df.loc[(b_df['Category']==category)&(b_df['Product']==product)&(b_df['Type']==type)]['Unit Price'] if category else 0, key="unit_price")
-                total_price = st.number_input("Total price of the commodity", value=unit_price*units, key="total_price")
-                paid = st.checkbox("Has the product been paid for?", value=False, key="paid")
+                weight = st.number_input("Enter the products weight in kg", value=None, key="Tweight")
+                units = st.number_input("Number of units sold", key="Tunits")
+                unit_price = st.number_input("Enter the unit price", value=b_df.loc[(b_df['Category']==category)&(b_df['Product']==product)&(b_df['Type']==type)]['Unit Price'] if category else 0, key="Tunit_price")
+                total_price = st.number_input("Total price of the commodity", value=unit_price*units, key="Ttotal_price")
+                paid = st.checkbox("Has the product been paid for?", value=False, key="Tpaid")
                 method = st.selectbox("Payment Method", ['POS','Cash', 'Transfer']),
                 paid_to = st.selectbox("Payment Received By", ['Me','Farm Fresh', 'Teas by Bella', 'Island Food Mart']),
                 date = st.date_input(label="Enter start date") 
