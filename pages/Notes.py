@@ -27,6 +27,7 @@ try:
                     if interface == 'Button Interface':
                         st.session_state["note_data_df"].loc[len(st.session_state["note_data_df"])] = st.session_state['note_table']
                     put_data('FarmNotes', st.session_state["note_data_df"].to_dict("records"))
+                    st.session_state["note_text_area"] = ""
         
             if interface == 'Table Interface':
                 

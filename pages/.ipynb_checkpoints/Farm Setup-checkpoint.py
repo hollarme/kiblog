@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 from utils import get_data, put_data
+import numpy as np
 
 #consider using records per year/half month/quarter/season
 #consider gathering data about the rain, sun irridiance, soil information and herbs
@@ -115,6 +116,15 @@ try:
                             key="prolistTable",
                             on_change=update_product_table
                         )
+                
+#                         st.subheader("Product List After Transactions")
+                
+#                         or_df = st.session_state["data_df"][pd.to_datetime(st.session_state["data_df"]['Date']).dt.date == datetime.date(datetime.now())]
+#                         co_df = st.session_state["tran_data_df"][pd.to_datetime(st.session_state["tran_data_df"]['Date']).dt.date == datetime.date(datetime.now())]
+#                         co_df['Units'] *= -1
+#                         co_df['Weight(kg)'] *= -1
+#                         pp_df = pd.concat([or_df.loc[:,('Category', 'Product', 'Type', 'Weight(kg)','Units')], co_df.loc[:,('Category', 'Product', 'Type', 'Weight(kg)','Units')]])
+#                         st.dataframe(pp_df.groupby(['Category', 'Product', 'Type']).sum())
         
                     else:
                         b_df = st.session_state["data_df_cat"]
@@ -166,6 +176,15 @@ try:
                         key="exp_cat_table"
             
                     )
+                
+        st.subheader("Product List After Transactions")
+                
+        or_df = st.session_state["data_df"][pd.to_datetime(st.session_state["data_df"]['Date']).dt.date == datetime.date(datetime.now())]
+        co_df = st.session_state["tran_data_df"][pd.to_datetime(st.session_state["tran_data_df"]['Date']).dt.date == datetime.date(datetime.now())]
+        co_df['Units'] *= -1
+        co_df['Weight(kg)'] *= -1
+        pp_df = pd.concat([or_df.loc[:,('Category', 'Product', 'Type', 'Weight(kg)','Units')], co_df.loc[:,('Category', 'Product', 'Type', 'Weight(kg)','Units')]])
+        st.dataframe(pp_df.groupby(['Category', 'Product', 'Type']).sum())
 
 except KeyError:
     st.switch_page('Home.py')
@@ -222,3 +241,6 @@ except KeyError:
                     
         #             st.session_state['exp_list_table'] = {'Category': category, 'Expenses': expenses, 'Type': type, 'Date':st.session_state['dt'], 'Note': note}
         
+       
+    
+
