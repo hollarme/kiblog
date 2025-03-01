@@ -78,62 +78,68 @@ try:
                 pass
 
             with income_tab:
-                b_df = st.session_state["inc_data_df"]
-                xl = b_df['Category'].tolist()
-                xl.insert(0,"")
-                category = st.selectbox("select the expenses category", set(xl), key='inccC')
-                xl = b_df.loc[b_df['Category']==category]['Product'].tolist()
-                xl.insert(0,"")
-                prod = st.selectbox("select the product", set(xl), key='inccP')
-                xl = b_df.loc[(b_df['Category']==category)&(b_df['Product']==prod)]['Type'].tolist()
-                xl.insert(0,"")
-                types = st.selectbox("select the product type if available", set(xl), key='inccT')
-                
-                label = ""
-                
-                if category:
-                    b_df = b_df[b_df['Category'].str.contains(category, na=False, regex=False)]
-                    label = ""#":black_small_square:" + category + ":red[Cost]" + ":black_small_square:" 
-                if prod:
-                    b_df = b_df[b_df['Product'].str.contains(prod, na=False, regex=False)]
-                    label = ""#":black_small_square:" + prod + ":red[Cost]" + ":black_small_square:" 
-                if types:
-                    b_df = b_df[b_df['Type'].str.contains(types, na=False, regex=False)]
-                    label =  ""#":black_small_square:" + types + ":red[Cost]" + ":black_small_square:"
+                try:
+                    b_df = st.session_state["inc_data_df"]
+                    xl = b_df['Category'].tolist()
+                    xl.insert(0,"")
+                    category = st.selectbox("select the expenses category", set(xl), key='inccC')
+                    xl = b_df.loc[b_df['Category']==category]['Product'].tolist()
+                    xl.insert(0,"")
+                    prod = st.selectbox("select the product", set(xl), key='inccP')
+                    xl = b_df.loc[(b_df['Category']==category)&(b_df['Product']==prod)]['Type'].tolist()
+                    xl.insert(0,"")
+                    types = st.selectbox("select the product type if available", set(xl), key='inccT')
                     
-                                        
-                col1, col2, col3 = st.columns(3)
-                
-                col2.metric(label=label, value=prettify(b_df['Total Price(N)'].sum()))
+                    label = ""
+                    
+                    if category:
+                        b_df = b_df[b_df['Category'].str.contains(category, na=False, regex=False)]
+                        label = ""#":black_small_square:" + category + ":red[Cost]" + ":black_small_square:" 
+                    if prod:
+                        b_df = b_df[b_df['Product'].str.contains(prod, na=False, regex=False)]
+                        label = ""#":black_small_square:" + prod + ":red[Cost]" + ":black_small_square:" 
+                    if types:
+                        b_df = b_df[b_df['Type'].str.contains(types, na=False, regex=False)]
+                        label =  ""#":black_small_square:" + types + ":red[Cost]" + ":black_small_square:"
+                        
+                                            
+                    col1, col2, col3 = st.columns(3)
+                    
+                    col2.metric(label=label, value=prettify(b_df['Total Price(N)'].sum()))
+                except KeyError:
+                    pass
 
             with expenses_tab:
-                b_df = st.session_state["expx_data_df"]#st.session_state["exp_data_df_cat"]
-                xl = b_df['Category'].tolist()
-                xl.insert(0,"")
-                category = st.selectbox("select the expenses category", set(xl))
-                xl = b_df.loc[b_df['Category']==category]['Expenses'].tolist()
-                xl.insert(0,"")
-                expenses = st.selectbox("select the expenses", set(xl))
-                xl = b_df.loc[(b_df['Category']==category)&(b_df['Expenses']==expenses)]['Type'].tolist()
-                xl.insert(0,"")
-                types = st.selectbox("select the expenses type if available", set(xl))
-                
-                label = ""
-                
-                if category:
-                    b_df = b_df[b_df['Category'].str.contains(category, na=False, regex=False)]
-                    label = ""#":black_small_square:" + category + ":red[Cost]" + ":black_small_square:" 
-                if expenses:
-                    b_df = b_df[b_df['Expenses'].str.contains(expenses, na=False, regex=False)]
-                    label = "" #":black_small_square:" + expenses + ":red[Cost]" + ":black_small_square:" 
-                if types:
-                    b_df = b_df[b_df['Type'].str.contains(types, na=False, regex=False)]
-                    label = ""#":black_small_square:" + types + ":red[Cost]" + ":black_small_square:"
+                try:
+                    b_df = st.session_state["expx_data_df"]#st.session_state["exp_data_df_cat"]
+                    xl = b_df['Category'].tolist()
+                    xl.insert(0,"")
+                    category = st.selectbox("select the expenses category", set(xl))
+                    xl = b_df.loc[b_df['Category']==category]['Expenses'].tolist()
+                    xl.insert(0,"")
+                    expenses = st.selectbox("select the expenses", set(xl))
+                    xl = b_df.loc[(b_df['Category']==category)&(b_df['Expenses']==expenses)]['Type'].tolist()
+                    xl.insert(0,"")
+                    types = st.selectbox("select the expenses type if available", set(xl))
                     
-                                        
-                col1, col2, col3 = st.columns(3)
-                
-                col2.metric(label=label, value=prettify(b_df['Amount'].sum()))
+                    label = ""
+                    
+                    if category:
+                        b_df = b_df[b_df['Category'].str.contains(category, na=False, regex=False)]
+                        label = ""#":black_small_square:" + category + ":red[Cost]" + ":black_small_square:" 
+                    if expenses:
+                        b_df = b_df[b_df['Expenses'].str.contains(expenses, na=False, regex=False)]
+                        label = "" #":black_small_square:" + expenses + ":red[Cost]" + ":black_small_square:" 
+                    if types:
+                        b_df = b_df[b_df['Type'].str.contains(types, na=False, regex=False)]
+                        label = ""#":black_small_square:" + types + ":red[Cost]" + ":black_small_square:"
+                        
+                                            
+                    col1, col2, col3 = st.columns(3)
+                    
+                    col2.metric(label=label, value=prettify(b_df['Amount'].sum()))
+                except KeyError:
+                    pass
 
             with note_tab:
                 pass

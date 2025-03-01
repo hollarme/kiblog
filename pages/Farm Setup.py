@@ -177,14 +177,14 @@ try:
             
                     )
                 
-        st.subheader("Product List After Transactions")
+        # st.subheader("Product List After Transactions")
                 
-        or_df = st.session_state["data_df"][pd.to_datetime(st.session_state["data_df"]['Date']).dt.date == datetime.date(datetime.now())]
-        co_df = st.session_state["tran_data_df"][pd.to_datetime(st.session_state["tran_data_df"]['Date']).dt.date == datetime.date(datetime.now())]
-        co_df['Units'] *= -1
-        co_df['Weight(kg)'] *= -1
-        pp_df = pd.concat([or_df.loc[:,('Category', 'Product', 'Type', 'Weight(kg)','Units')], co_df.loc[:,('Category', 'Product', 'Type', 'Weight(kg)','Units')]])
-        st.dataframe(pp_df.groupby(['Category', 'Product', 'Type']).sum())
+        # or_df = st.session_state["data_df"][pd.to_datetime(st.session_state["data_df"]['Date']).dt.date == datetime.date(datetime.now())]
+        # co_df = st.session_state["tran_data_df"][pd.to_datetime(st.session_state["tran_data_df"]['Date']).dt.date == datetime.date(datetime.now())]
+        # co_df['Units'] *= -1
+        # co_df['Weight(kg)'] *= -1
+        # pp_df = pd.concat([or_df.loc[:,('Category', 'Product', 'Type', 'Weight(kg)','Units')], co_df.loc[:,('Category', 'Product', 'Type', 'Weight(kg)','Units')]])
+        # st.dataframe(pp_df.groupby(['Category', 'Product', 'Type']).sum())
 
 except KeyError:
     st.switch_page('Home.py')
