@@ -84,8 +84,9 @@ try:
                 )
 
             elif interface == 'MitoSheet Interface':
-                dataframe, code = spreadsheet(st.session_state["inc_data_df"])
-                st.code(code)
+                pass
+                # dataframe, code = spreadsheet(st.session_state["inc_data_df"])
+                # st.code(code)
         
             else:
                 b_df = st.session_state["data_df_cat"]
