@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 from utils import get_data, put_data
-# from mitosheet.streamlit.v1 import spreadsheet
+from mitosheet.streamlit.v1 import spreadsheet
 
 st.session_state['dt'] = datetime.now()#.isoformat()
 
