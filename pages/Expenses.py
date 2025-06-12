@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 from utils import get_data, put_data
-from mitosheet.streamlit.v1 import spreadsheet
+# from mitosheet.streamlit.v1 import spreadsheet
 
 st.session_state['dt'] = datetime.now()#.isoformat()
 
@@ -76,8 +76,9 @@ try:
                     args=[status]
                 )
             elif interface == 'MitoSheet Interface':
-                dataframe, code = spreadsheet(st.session_state["expx_data_df"])
-                st.code(code)
+                pass
+                # dataframe, code = spreadsheet(st.session_state["expx_data_df"])
+                # st.code(code)
             else:
                 b_df = st.session_state["exp_data_df_cat"]
                 category = st.selectbox("select the expenses category", set(b_df['Category'].tolist()))
