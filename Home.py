@@ -90,17 +90,17 @@ try:
                     xl.insert(0,"")
                     types = st.selectbox("select the product type if available", set(xl), key='inccT')
                     
-                    label = ""
+                    label = "All Income"
                     
                     if category:
                         b_df = b_df[b_df['Category'].str.contains(category, na=False, regex=False)]
-                        label = ""#":black_small_square:" + category + ":red[Cost]" + ":black_small_square:" 
+                        label = category 
                     if prod:
                         b_df = b_df[b_df['Product'].str.contains(prod, na=False, regex=False)]
-                        label = ""#":black_small_square:" + prod + ":red[Cost]" + ":black_small_square:" 
+                        label = prod
                     if types:
                         b_df = b_df[b_df['Type'].str.contains(types, na=False, regex=False)]
-                        label =  ""#":black_small_square:" + types + ":red[Cost]" + ":black_small_square:"
+                        label =  types
                         
                                             
                     col1, col2, col3 = st.columns(3)
@@ -122,17 +122,17 @@ try:
                     xl.insert(0,"")
                     types = st.selectbox("select the expenses type if available", set(xl))
                     
-                    label = ""
+                    label = "All Expenses"
                     
                     if category:
                         b_df = b_df[b_df['Category'].str.contains(category, na=False, regex=False)]
-                        label = ""#":black_small_square:" + category + ":red[Cost]" + ":black_small_square:" 
+                        label = category 
                     if expenses:
                         b_df = b_df[b_df['Expenses'].str.contains(expenses, na=False, regex=False)]
-                        label = "" #":black_small_square:" + expenses + ":red[Cost]" + ":black_small_square:" 
+                        label = expenses 
                     if types:
                         b_df = b_df[b_df['Type'].str.contains(types, na=False, regex=False)]
-                        label = ""#":black_small_square:" + types + ":red[Cost]" + ":black_small_square:"
+                        label = types
                         
                                             
                     col1, col2, col3 = st.columns(3)
